@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Réunion Parents – 1re Bac pro AGOrA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Reveal core -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.css" />
+
+    <style>
+        /* ================= THEME SOBRE & PRO ================= */
+        :root {
+            /* palette chaude mais controllée */
+            --grad-1: #ff7e5f;
+            --grad-2: #f15a5a;
+            --grad-3: #b83280;
+            --accent:
+                /*#FFD166;*/
+                #EDF2F2;
+            /* titres */
+            --text: #ffffff;
+            /* texte */
+            --panel: rgba(22, 22, 26, .55);
+            /* overlay sombre pour blocs */
+            --line: rgba(255, 255, 255, .18);
+            --shadow: 0 12px 30px rgba(0, 0, 0, .35);
+        }
+
+        /* BG global : photo lycée + dégradé chaud */
+        body {
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+            background: white
+        }
+
+        /* Lisibilité générale */
+        .reveal .slides {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+        }
+
+        .reveal h1,
+        .reveal h2 {
+            color: var(--accent);
+            letter-spacing: 0.2px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, .45);
+        }
+
+        .reveal h1 {
+            font-size: 2.3em;
+            margin-bottom: .3em;
+        }
+
+        .reveal h2 {
+            font-size: 1.7em;
+            margin-bottom: .25em;
+        }
+
+        .reveal p,
+        .reveal li {
+            font-size: 1.1em;
+            line-height: 1.55;
+        }
+
+        /* Bullets sobres et nets (•) */
+        .reveal ul {
+            margin: .4em 0 0 0;
+            padding-left: 1.1em;
+        }
+
+        .reveal ul li {
+            margin: .25em 0;
+        }
+
+        .reveal ul {
+            list-style: disc;
+        }
+
+        /* Panneaux overlay lisibles */
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(6px);
+        }
+
+        .stack {
+            display: grid;
+            gap: 14px;
+        }
+
+        /* Bandeau d’intro discret */
+        .pill {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background:
+                /*gba(255,255,255,.16); border: 1px solid var(--line);*/
+                #c1b09d;
+            font-weight: 600;
+        }
+
+        /* Mise en page slide centrée à gauche (plus pro que full-center) */
+        .reveal section {
+            text-align: left;
+        }
+
+        /* Option : slide “cover” avec photo différente + overlay */
+        .cover::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .55));
+            z-index: -1;
+        }
+
+        /* Accessibilité : si l’utilisateur réduit les animations */
+        @media (prefers-reduced-motion: reduce) {
+
+            .reveal .slides,
+            .reveal .slides * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        .reveal .backgrounds {
+            background-image: url("aime.jpg");
+            background-size: cover;
+
+            background-repeat: no-repeat;
+            background-position: right;
+            background-attachment: fixed;
+        }
+
+        /* overlay par-dessus l’image pour la lisibilité */
+        .reveal .backgrounds::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            /*background: linear-gradient(135deg, rgba(0,0,0,.35), rgba(0,0,0,.55));*/
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        /* panneau “verre dépoli” clair */
+        .panel--light {
+            background:
+                /*rgba(255,255,255,0.85)*/
+                /*#c1b09d*/
+                /*#FEEBEC*/
+                #EDF2F2;
+            color:
+                /*#1b1b1b*/
+                /*#CE2C31*/
+                /*#FFF7F7*/
+                /*#641723*/
+                #1A1A1A;
+            border-radius: 16px;
+            padding: 18px 20px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            /*backdrop-filter: blur(6px);*/
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .20);
+            margin: auto;
+        }
+
+        /* variante foncée si zone très claire */
+        .panel--dark {
+            background: rgba(20, 20, 24, 0.55);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(6px);
+        }
+
+        .reveal h2 {
+            background-color:
+                /*#E5484D*/
+                #F59100;
+            color:
+                /*#FEEBEC*/
+                /*#1A1A1A;*/#EDF2F2;
+            width: fit-content;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .reveal h3 {
+            /*background-color: /*#F59100*//*#59B9C7*/ /*#F59100;;*/
+            
+            color: /*#FFFFFF*/#bb4b02;
+            width: fit-content;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .reveal .slides .fragment.blur {
+            filter: blur(5px);
+        }
+
+        .reveal .slides .fragment.blur.visible {
+            filter: none;
+        }
+
+        /* Cartes périodes */
+        .periode-card {
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 12px 0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .periode1,
+        .periode2 {
+            background:
+                /*rgba(255,255,255,0.85)*/
+                /*#c1b09d*/
+                /*#FEEBEC*/
+                #EDF2F2;
+            color:
+                /*#1b1b1b*/
+                /*#CE2C31*/
+                /*#FFF7F7*/
+                /*#641723*/
+                #1A1A1A;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide : Signification AGOrA -->
+            <section>
+                <h1
+                  style="width: fit-content; margin: auto; text-align: center; font-size: 5rem; background:#F59100; color:#481600;">
+                  🎓 Bac pro AGOrA
+                </h1>
+                <div class="panel--light" style="max-width:fit-content; text-align: center; margin-top: 20px;">
+                  <p style="font-size: 2rem;">
+                    <span class="fragment"><span style="color: #F59100;">A</span>ssistance</span>
+                    <span class="fragment">à la <span style="color: #F59100;">G</span>estion</span>
+                    <span class="fragment">des <span style="color: #F59100;">Or</span>ganisations</span>
+                    <span class="fragment">et de leurs <span style="color: #F59100;">A</span>ctivités</span>
+                  </p>
+                </div>
+              </section>
+
+              <section>
+                <h2>🎓 L’équipe pédagogique</h2>
+                <div class="panel--light" style="max-width:fit-content; text-align:center;">
+                  <ul style="list-style:none; padding:0; font-size:1.2rem; line-height:1.6; text-align:start;">
+                    <li>💼 Mme AFKIR – Professeure d’économie-droit</li>
+                    <li>🔢 M. DIANKHA – Professeur de mathématiques</li>
+                    <li>🏃‍♀️ Mme MAGDELAINE – Professeure d’EPS</li>
+                  </ul>
+                </div>
+              </section>
+            <!-- 2. C’est quoi AGOrA -->
+            <section data-transition="zoom">
+                <h2>ℹ️ C’est quoi le Bac pro AGOrA ?</h2>
+                <div class="panel--light" style="max-width:fit-content">
+                  <ul style="line-height:1.6; font-size:1.2rem;">
+                    <li>📂 Apprendre à <b>organiser</b>, <b>communiquer</b>, utiliser les <b>outils numériques</b></li>
+                    <li>🏢 Utile dans <b>tous les secteurs</b> : entreprises, mairies, associations, services</li>
+                    <li>🤝 Des compétences pour la vie : <b>accueil</b>, <b>dossiers</b>, <b>travail d’équipe</b></li>
+                  </ul>
+                </div>
+              </section>
+
+
+            <!-- 3. Ce qu’on apprend -->
+   
+ <!-- 3. Ce qu’on apprend -->
+<section data-transition="none">
+    <h2>📘 Ce qu’on apprend</h2>
+  
+    <div class="panel--light" style="max-width:1100px">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch">
+        <!-- Bloc Générales -->
+        <div data-id="bloc-general"
+          style=" color:#1b1b1b; border-radius:16px; padding:16px; border:1px solid rgba(0,0,0,.06);">
+          <h3 style="margin-top:0">📖 Enseignements <b>généraux</b></h3>
+          <ul style="margin:6px 0 0 18px; line-height:1.5">
+            <li>Français, Maths, Anglais</li>
+            <li>Histoire-Géo, PSE, EPS</li>
+            <li>Allemand, EMC, Espagnol</li>
+          </ul>
+        </div>
+  
+        <!-- Bloc Professionnelles -->
+        <div data-id="bloc-pro"
+          style="color:#1b1b1b; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:16px;">
+          <h3 style="margin-top:0">💼 Enseignements <b>professionnels</b></h3>
+          <ul style="margin:6px 0 0 18px; line-height:1.5">
+            <li>📞 Communication avec le public</li>
+            <li>📋 Organisation & suivi de dossiers</li>
+            <li>💻 Outils de gestion & bureautique</li>
+            <li>⚖️ Économie & Droit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+            <section data-auto-animate>
+                <h2>Les matières pro sont <u>déterminantes</u></h2>
+
+                <div class="panel--light" style="max-width:1100px">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch">
+                        <!-- Bloc Générales (rétréci + estompé) -->
+                        <div data-id="bloc-general"
+                            style="transform:scale(.9);  color:#1A1A1A; border-radius:16px; padding:16px; border:1px solid rgba(0,0,0,.06);">
+                            <h3 style="margin-top:0">Enseignements <b>généraux</b></h3>
+                            <p style="margin:6px 0 0 0; font-size:.98em">Ils comptent dans la note finale ✅</p>
+                        </div>
+
+                        <!-- Bloc Professionnelles (agrandi + mis en avant) -->
+                        <div data-id="bloc-pro"
+                            style="transform:scale(1.06); color:#1A1A1A; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:16px;">
+                            <h3 style="margin-top:0">Enseignements <b>professionnels</b></h3>
+                            <p style="margin:6px 0 0 0; font-size:1.05em"><b>Sans la moyenne en matières pro → pas de
+                                    Bac</b> ⚠️</p>
+                            <ul class="fragment" style="margin:8px 0 0 18px; line-height:1.55">
+                                <li><b>Présence</b> et <b>assiduité</b> indispensables</li>
+                                <li><b>Rapports de stage</b> soignés, compétences validées</li>
+                                <li><b>Implication</b> en atelier / projets</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--<p class="fragment" style="margin-top:14px">
+        Parents, votre <b>encouragement</b> sur les matières pro fait la différence 💪
+      </p>-->
+                </div>
+            </section>
+
+
+            <!-- 4. Stages (PFMP) : vertical slides -->
+            <!-- ===== Slide PFMP : explications à gauche / dates à droite ===== -->
+            <section  data-transition="convex">
+                <h2>🛠️ Les stages (PFMP)</h2>
+                <div
+                  style="display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:start; max-width: 1100px;">
+              
+                  <!-- Colonne gauche -->
+                  <div class="panel--light" style="max-width:fit-content">
+                    <ul>
+                      <li>⏱️ <b>8 semaines</b> de stage cette année</li>
+                      <li>🌍 Lieux : entreprise, mairie, association, service public</li>
+                      <li>🎯 But : découvrir le <b>vrai métier</b> et enrichir le CV</li>
+                    </ul>
+                  </div>
+              
+                  <!-- Colonne droite : cartes périodes -->
+                  <div>
+                    <div class="periode-card periode1 fragment blur" data-fragment-index="1">
+                      <h3>🗓️ PFMP 1 </h3>
+                      <b>11 novembre → 2 décembre 2025</b>
+                    </div>
+              
+                    <div class="periode-card periode2 fragment blur" data-fragment-index="2">
+                      <h3>🗓️ PFMP 2 </h3>
+                      <b>1<sup>er</sup> mars → 15 mars 2026</b>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            <!-- Passage en Terminale -->
+            <section>
+                <h2>Passage en Terminale : ce qui compte</h2>
+                <div class="panel--light" style="max-width:fit-content">
+                    <ul>
+                        <li><b>Présence & assiduité</b> en cours et en stages</li>
+                        <li class="fragment"><b>Implication en matières pro</b> (compétences validées)</li>
+                        <li class="fragment"><b>Progression</b> en enseignements généraux</li>
+                        <li class="fragment"><b>Comportement pro</b> : respect, ponctualité, communication</li>
+                    </ul>
+                    <!--<p class="fragment" style="margin-top:10px"><b>Objectif commun :</b> réussir le passage en Terminale AGOrA</p>-->
+                </div>
+            </section>
+            <!-- 5. Après le Bac (opportunités détaillées) -->
+
+            <!-- Section 1 : Vie active -->
+            <section>
+                <h2>🎯 Après le Bac : <span style="color:#481600">Entrer dans la vie active</span></h2>
+                <div class="panel--light" style="max-width:fit-content">
+                  <p style="font-size:1.2rem;">Votre enfant peut <b>travailler directement</b>.</p>
+                  <ul style="margin-top:10px;">
+                    <li class="fragment">👩‍💼 Assistant·e administratif·ve</li>
+                    <li class="fragment">📝 Secrétaire (PME, grande entreprise)</li>
+                    <li class="fragment">🏛️ Employé·e de mairie ou d’association</li>
+                    <li class="fragment">📂 Appui à la gestion et suivi de dossiers</li>
+                  </ul>
+                </div>
+              </section>
+
+
+            <!-- Section 2 : Poursuite d’études -->
+            <section>
+                <h2>Après le Bac : <span style="color:#481600">Continuer les études</span></h2>
+                <div class="panel--light" style="max-width:fit-content">
+                    <p style="font-size:1.2rem;">Le Bac AGOrA ouvre la porte à plusieurs <b>BTS</b> :</p>
+                    <ul style="margin-top:10px;">
+                        <li class="fragment">BTS Gestion de la PME</li>
+                        <li class="fragment">BTS Comptabilité & Gestion</li>
+                        <!--<li class="fragment">BTS Support à l’action managériale</li>-->
+                        <li class="fragment">BTS Commerce ou autres domaines tertiaires</li>
+                    </ul>
+                    <!--<p class="fragment" style="margin-top:10px;"><b>Poursuivre, c’est viser plus haut</b> : des postes à responsabilités, des études supérieures, de nouvelles opportunités.</p>-->
+                </div>
+            </section>
+
+            <!-- Section 3 : Synthèse -->
+            <section data-auto-animate>
+                <h2>Deux portes après le Bac</h2>
+                <div class="panel--light" style="max-width: 1000px; text-align:center;">
+                    <p style="font-size:1.3rem;">Chaque élève choisit son chemin :</p>
+                    <div style="display:flex; gap:40px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
+                        <!-- Bloc Vie active -->
+                        <div class="fragment"
+                            style="flex:1; min-width:250px; border:1px solid rgba(0,0,0,.06); padding:20px; border-radius:16px; color:#1b1b1b;">
+                            <h3>💼 Vie active</h3>
+                            <p>Un emploi direct après le Bac, une expérience professionnelle, un salaire.</p>
+                        </div>
+                        <!-- Bloc Études -->
+                        <div class="fragment"
+                            style="flex:1; min-width:250px; border:1px solid rgba(0,0,0,.06); padding:20px; border-radius:16px; color:#1b1b1b;">
+                            <h3>🎓 BTS & études</h3>
+                            <p>Deux années d’études supérieures pour aller plus loin et viser des postes à
+                                responsabilités.</p>
+                        </div>
+                    </div>
+                    <!--<p class="fragment" style="margin-top:20px; font-size:1.2rem;"><b>L’essentiel</b> : avec le Bac AGOrA, <u>les deux voies sont possibles</u>. Tout dépend du projet du jeune.</p>-->
+                </div>
+            </section>
+
+            <!-- 6. Pourquoi c’est important (valeur ajoutée) -->
+            <section data-transition="zoom">
+                <h2>Pourquoi c’est important ?</h2>
+                <div class="panel--light" style="max-width:fit-content">
+                    <ul>
+                        <li><b>Polyvalence</b> : des bases solides utiles dans de <b>nombreux métiers</b>.</li>
+                        <li><b>Concret</b> : on apprend en faisant (cours + stages), on progresse, on gagne en
+                            confiance.</li>
+                        <li><b>Avenir ouvert</b> : possibilité de travailler rapidement <i>ou</i> de poursuivre en BTS.
+                        </li>
+                        <li><b>Compétences qui comptent</b> : relationnel, organisation, respect des consignes,
+                            fiabilité.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 7. Ensemble avec les familles -->
+            <section>
+                <h2>Ensemble avec les familles</h2>
+                <div class="panel--light" style="max-width:fit-content">
+                    <ul>
+                        <li>Nous accompagnons chaque élève à l’école et en entreprise.</li>
+                        <li>Votre rôle est clé : <b>encourager, valoriser, motiver</b> la présence et les efforts.</li>
+                        <li>Ensemble, on les aide à <b>réussir et à croire en eux</b>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 8. Conclusion -->
+            <section>
+                <h2 style="margin: 10px auto;">En résumé</h2>
+                <div class="panel--light" style="max-width:fit-content">
+                    <ul>
+                        <li class="fragment" data-fragment-index="3">Une formation <b>utile, moderne et concrète</b>.
+                        </li>
+                        <li class="fragment" data-fragment-index="2">Des stages qui donnent <b>de vraies
+                                expériences</b>.</li>
+                        <li>Un <b>avenir ouvert</b> : emploi ou BTS, selon l’envie et le profil.</li>
+                    </ul>
+                </div>
+            </section>
+            <!-- Slide finale 1 : préparation -->
+
+
+            <!-- Slide finale 2 : animation vers le "Merci" -->
+            <section data-auto-animate>
+                <h1 class="fragment"
+                style="text-align:center; font-size:5rem; color:#481600; text-shadow:0 4px 10px rgba(0,0,0,.5)">
+                Merci pour votre attention
+            </h1>
+                <p style="text-align:center; margin-top:30px; font-size:1.6rem;">
+                    Ensemble, parents et professeurs, nous aidons les élèves à <b>réussir</b>.
+                </p>
+                <p class="fragment" style="text-align:center; margin-top:10px; font-size:1.4rem; color:#641723;">
+                    Votre soutien est essentiel 💪
+                </p>
+ 
+            </section>
+
+
+        </div>
+    </div>
+
+    <!-- Reveal init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'slide',      // sobre et pro
+            controls: true,
+            progress: true,
+            //autoSlide: 5000,
+            //loop: true
+        });
+    </script>
+
+</body>
+
+</html>
